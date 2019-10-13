@@ -27,17 +27,33 @@ Dočasně nedostupné.
 Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je poskytnul?
 
 ## Similar research
-* [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)  
+* #### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)  
     Používají "obyčejný" deep convolutional GAN (DC-GAN). 
     Zmiňují, že je problém dosáhnout spojitých čar u vygenerovaných otisků prstů, proto
     použili pro regularizaci total variation (TV). 
-    Generují obrázky 64x64. 
-    Používají datasety: FVC 2006 Fingerprint Database a PolyU Fingerprint Databases (zvlášť).
-    FID score, jak sami zmiňují mají poměrně malé (70.5)
+    Generují obrázky 64x64.  
     
+    Použité datasety:
+    1. FVC 2006 Fingerprint Database 
+    2. PolyU Fingerprint Databases (použité zvlášť).  
+    
+    FID score, jak sami zmiňují mají poměrně malé (70.5)  
     Implementaci jsem nenašel.
-* [DeepMasterPrints (arXiv, Oct 2018 v4)](https://arxiv.org/abs/1705.07386)  
-* [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
+* #### [DeepMasterPrints (arXiv, Oct 2018 v4)](https://arxiv.org/abs/1705.07386)  
+    Cílem publikace je ukázat jak lze napadnout malé čtečky otisků prstů (na mobilních telefonech).
+    Učí síť generovat (částečné) otisky prstů. Po naučení sítě hledají v jejím latent space, takové otisky, které 
+    se nejlépe hodí pro slovníkový útok (bez znalosti otisků, které jsou u čtečky autorizovány).  
+    Používají síť popsanou v publikaci [Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434)
+    Je to WGAN, Wasserstein loss function, RMSProp lr=0.00005, batchSize=64, laten variable vector=64
+    
+    Použité datasety:
+    1. NIST Special Database 9 (10x5400)  
+    2. FingerPass DB7 dataset (12 částečných otisku x720) (použité zvlášť)  
+    
+     Implementaci jsem nenašel.
+    
+    
+* #### [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
 
 ## TODO
 Nastudovat jak přesně funguje total variation a popřemýšlet na regularizací pro docílení kvalitních obrázků.
