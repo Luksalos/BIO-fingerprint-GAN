@@ -8,23 +8,29 @@
 6000 snímků od 600 afrických osob.
 Obsahuje nějaké labely viz. publikace
 
+* #### CASIA
+    [Ke stažení](http://www.idealtest.org/dbDetailForUser.do?id=7)  
+20000 rolovaných otisků od 500 osob (40x500)
+
+
 * #### PolyU Fingerprint Databases
     [Link na stránku s datasetem](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm)  
 [Jiný dataset od stejné skupiny, nevím ale jak stáhnout](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm)  
-1800 otisků získaných rolováním od 300 osob.  
+1800 rolovaných otisků od 300 osob.  
 Stažení po vyplnění formuláře.
 
 * #### FVC2006 fingerprint database
     [Stažení po vyžádání e-mailem](http://atvs.ii.uam.es/atvs/fvc2006.html)  
 [Popis datasetu](http://bias.csr.unibo.it/fvc2006/databases.asp)  
-1800 otisků od 140 osob (12 otisků na osobu).  
+1800 otisků od 140 osob (12x140).  
 Dataset obsahuje 4 sady (vždy 1800) otisků získány různými sensory.  
 Stažení po vyžádání e-mailem.
 
 * #### Datasets from NIST
     [Link](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software)  
-Dočasně nedostupné.  
-Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je poskytnul?
+Dočasně nedostupné, měly by to výt desetitisíce otisků prstů.  
+Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je poskytnul?  
+Lukáš: Napíšu DR. Kanichovi
 
 ## Similar research
 * #### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)  
@@ -54,6 +60,14 @@ Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je 
     
     
 * #### [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
+    Používají I-WGAN. Pro lepší výsledky a snazší trénink mají v architektuře pro předtrénování generátoru convolutional auto-encoder.  
+    Natrénovat např DC-GAN pro generování 512x512 obrázků je bez optimalizací (např.: progressive GAN) takřka nemožné.  
+    Mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovat.  
+    Generují otisky o velikosti 512x512 (500 DPI). 
+    
+    Použité datasety:
+    1. 250K rolovaných otisků prstů od nezmíněné forézní agentury. Odkazují se na [tento článek](https://ieeexplore.ieee.org/document/8272728), 
+    kde byl použit stejný dataset
 
 ## TODO
-Nastudovat jak přesně funguje total variation a popřemýšlet na regularizací pro docílení kvalitních obrázků.
+Nastudovat jak přesně funguje total variation a popřemýšlet nad regularizací pro docílení kvalitních obrázků.
