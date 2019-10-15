@@ -5,7 +5,7 @@
 * #### SOCOFing
     [Ke stažení na Kaggle](https://www.kaggle.com/ruizgara/socofing)  
 [Publikace](https://arxiv.org/pdf/1807.10609.pdf)  
-6000 snímků od 600 afrických osob.
+6000 otisků od 600 afrických osob (10x600).  
 Obsahuje nějaké labely viz. publikace
 
 * #### CASIA
@@ -28,11 +28,10 @@ Stažení po vyžádání e-mailem.
 
 * #### Datasets from NIST
     [Link](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software)  
-Dočasně nedostupné, měly by to výt desetitisíce otisků prstů.  
+Dočasně nedostupné, měly by to být desetitisíce otisků prstů. NIST SD14 obsahuje 54K otisků.    
 Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je poskytnul?  
-Lukáš: Napíšu DR. Kanichovi
 
-## Similar research
+## Related Work
 * #### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)  
     Používají "obyčejný" deep convolutional GAN (DC-GAN). 
     Zmiňují, že je problém dosáhnout spojitých čar u vygenerovaných otisků prstů, proto
@@ -40,14 +39,18 @@ Lukáš: Napíšu DR. Kanichovi
     Generují obrázky 64x64.  
     
     Použité datasety:
-    1. FVC 2006 Fingerprint Database 
-    2. PolyU Fingerprint Databases (použité zvlášť).  
+    1. FVC 2006 Fingerprint Database (12x140)
+    2. PolyU Fingerprint Databases (5x300), (použité zvlášť).  
     
     FID score, jak sami zmiňují mají poměrně malé (70.5)  
     Implementaci jsem nenašel.
+    
+    Nekvalitní publikace, zmiňují že GANy používají pro generování otisků jako první, 
+    což rozhodně neni pravda, viz. další dvě popsané publikace.
+    
 * #### [DeepMasterPrints (arXiv, Oct 2018 v4)](https://arxiv.org/abs/1705.07386)  
     Cílem publikace je ukázat jak lze napadnout malé čtečky otisků prstů (na mobilních telefonech).
-    Učí síť generovat (částečné) otisky prstů. Po naučení sítě hledají v jejím latent space, takové otisky, které 
+    Učí síť generovat (částečné) otisky prstů. Po naučení sítě hledají v jejím latent space takové otisky, které 
     se nejlépe hodí pro slovníkový útok (bez znalosti otisků, které jsou u čtečky autorizovány).  
     Používají síť popsanou v publikaci [Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434)
     Je to WGAN, Wasserstein loss function, RMSProp lr=0.00005, batchSize=64, laten variable vector=64
@@ -61,13 +64,16 @@ Lukáš: Napíšu DR. Kanichovi
     
 * #### [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
     Používají I-WGAN. Pro lepší výsledky a snazší trénink mají v architektuře pro předtrénování generátoru convolutional auto-encoder.  
-    Natrénovat např DC-GAN pro generování 512x512 obrázků je bez optimalizací (např.: progressive GAN) takřka nemožné.  
-    Mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovat.  
+    Natrénovat např DC-GAN pro generování 512x512 obrázků je bez optimalizací (např.: progressive GAN) takřka nemožné.    
     Generují otisky o velikosti 512x512 (500 DPI). 
     
     Použité datasety:
     1. 250K rolovaných otisků prstů od nezmíněné forézní agentury. Odkazují se na [tento článek](https://ieeexplore.ieee.org/document/8272728), 
     kde byl použit stejný dataset
+    
+    Implementaci jsem nenašel, ale mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovatproblém ji zrepli.
+    popsaných
+    Ze tří popsaných publikací je tato rozhodně nejlepší.
 
 ## TODO
 Nastudovat jak přesně funguje total variation a popřemýšlet nad regularizací pro docílení kvalitních obrázků.
