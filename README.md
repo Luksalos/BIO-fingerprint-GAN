@@ -2,34 +2,33 @@
 
 ## Datasets
 
-* #### SOCOFing
-    [Ke stažení na Kaggle](https://www.kaggle.com/ruizgara/socofing)  
-[Publikace](https://arxiv.org/pdf/1807.10609.pdf)  
-6000 otisků od 600 afrických osob (10x600).  
-Obsahuje nějaké labely viz. publikace
+#### SOCOFing
+[Stáhnout](https://drive.google.com/open?id=1netSFAA3xMxTUw7AwgnmUDvIfSUTPPME) |
+[Dostupné i na Kaggle](https://www.kaggle.com/ruizgara/socofing) (obsahuje duplicitní složky) |
+[Publikace](https://arxiv.org/pdf/1807.10609.pdf) \
+6000 otisků od 600 afrických osob (10x600). Obsahuje nějaké labely viz publikace.
 
-* #### CASIA
-    [Ke stažení](http://www.idealtest.org/dbDetailForUser.do?id=7)  
+#### CASIA
+[Stáhnout](https://drive.google.com/open?id=1-_qpfFk3nfBn6rd01PHHKJhG2pi9CImv) |
+[Dostupné i zde](http://www.idealtest.org/dbDetailForUser.do?id=7) (nutná registrace) \
 20000 rolovaných otisků od 500 osob (40x500)
 
+#### PolyU Fingerprint Databases
+[Stáhnout](https://drive.google.com/open?id=132CaZCbq4Z92KKo2oBWM4p54wC3BhpCN) |
+[Dostupné i zde](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (nutná registrace) \
+1800 rolovaných otisků od 300 osob. \
+Existuje také [jiný dataset](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm) od stejné skupiny, který nejspíš nejde stáhnout.
 
-* #### PolyU Fingerprint Databases
-    [Link na stránku s datasetem](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm)  
-[Jiný dataset od stejné skupiny, nevím ale jak stáhnout](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm)  
-1800 rolovaných otisků od 300 osob.  
-Stažení po vyplnění formuláře.
+#### FVC2006 fingerprint database
+[Dostupné zde](http://atvs.ii.uam.es/atvs/fvc2006.html) (nutná registrace učitele) |
+[Popis datasetu](http://bias.csr.unibo.it/fvc2006/databases.asp)  \
+1800 otisků od 140 osob (12x140). Dataset obsahuje 4 sady (vždy 1800) otisků získány různými sensory.
 
-* #### FVC2006 fingerprint database
-    [Stažení po vyžádání e-mailem](http://atvs.ii.uam.es/atvs/fvc2006.html)  
-[Popis datasetu](http://bias.csr.unibo.it/fvc2006/databases.asp)  
-1800 otisků od 140 osob (12x140).  
-Dataset obsahuje 4 sady (vždy 1800) otisků získány různými sensory.  
-Stažení po vyžádání e-mailem.
-
-* #### Datasets from NIST
-    [Link](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software)  
-Dočasně nedostupné, měly by to být desetitisíce otisků prstů. NIST SD14 obsahuje 54K otisků.    
-Nelze je stáhnout někde jinde, nebo nemá je někdo stažené, že by nám je poskytnul?  
+#### Datasets from NIST
+[Stáhnout SD04](https://drive.google.com/open?id=1vkwb87E1_fuXUG9q2KHI2mBMWgspxRg_) |
+[Info](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software) \
+Další části nedostupné. Měly by to být desetitisíce otisků (SD14 obsahuje 54K otisků). \
+Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?  
 
 ## Related Work
 * #### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)  
