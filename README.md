@@ -70,8 +70,7 @@ Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?
     1. 250K rolovaných otisků prstů od nezmíněné forézní agentury. Odkazují se na [tento článek](https://ieeexplore.ieee.org/document/8272728), 
     kde byl použit stejný dataset
     
-    Implementaci jsem nenašel, ale mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovatproblém ji zrepli.
-    popsaných
+    Implementaci jsem nenašel, ale mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovat.
     Ze tří popsaných publikací je tato rozhodně nejlepší.
 
 ## TODO
