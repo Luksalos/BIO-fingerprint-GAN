@@ -73,5 +73,14 @@ Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?
     Implementaci jsem nenašel, ale mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovat.
     Ze tří popsaných publikací je tato rozhodně nejlepší.
 
-## TODO
-Nastudovat jak přesně funguje total variation a popřemýšlet nad regularizací pro docílení kvalitních obrázků.
+
+## GANs SOTA and git@github.com:xstast24/UnIT2019-Nerozumim.git publications
+* #### [Self-Attention Generative Adversarial Networks (arXiv, May 2018 v1)](https://arxiv.org/abs/1805.08318)
+    
+* #### [Spectral Normalization for Generative Adversarial Networks (arXiv, Feb 2018)](https://arxiv.org/abs/1802.05957)
+    Velkou mírou přispívá k stabilitě učení sítě. Použito např. v SAGAN
+* #### [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium (arXiv, Jun 2017 v1)](https://arxiv.org/abs/1706.08500)
+    Použití různě velkého learning rate pro generátor a diskriminator.
+* #### [A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv, Dec 2018 v1)](https://arxiv.org/abs/1812.04948)
+
+* #### [Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv, Oct 2017 v1)](https://arxiv.org/abs/1710.10196)
