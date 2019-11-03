@@ -1,5 +1,29 @@
 # BIO-fingerprint-GAN
 
+## Install
+[Install latest docker for Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)  
+[Install Nvidia Docker](https://github.com/NVIDIA/nvidia-docker)
+
+## TODO
+* Zkusit naučit SAGAN, možné implementace: 
+    1. [TF1 asi nejjednodušší implementace (aktuálně v stažena v repu)](https://github.com/taki0112/Self-Attention-GAN-Tensorflow) 
+    2. [TF1 implementace od Google Brain, nutno hodně upravit](https://github.com/brain-research/self-attention-gan?fbclid=IwAR21-JpEZA3TBx1GOGpoLHeGFzR3NgluFsA9BtGNh-CYPVMKJztWT1tIgrs)
+    3. [TF1 implementace používající TF-GAN, ](https://github.com/tensorflow/gan/tree/master/tensorflow_gan/examples/self_attention_estimator)
+* Pokud nepůjde naučit SAGAN (nedostatečný výkon, mode collapse, ...), zkusit nějaký jednodušší model:
+    1. [TF2 implementace WGAN-GP, DRAGAN](https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Tensorflow-2) 
+    2. Hodně implementací je zastaralých :(
+* State of the art modely nenaučíme, nemám na to výpočetní výkon :(, 
+StyleGAN, BMSG-GAN, Progressive Growing GAN, BigGAN všechny potřebují minimálně 11GB paměti a učí se v řádech týdnů (ImageNET)
+
+## Run
+```shell script
+# build dev docker image:
+make docker-build
+
+# run container in dev mode (mount local dir + open ports for tensorboard) :
+make docker-run-gpu
+```
+
 ## Datasets
 
 #### SOCOFing
