@@ -5,6 +5,13 @@
 [Install Nvidia Docker](https://github.com/NVIDIA/nvidia-docker)
 
 ## TODO
+edit 6.11:  
+Na Kaggle před nedávnem proběhla soutěž na [generování psů](https://www.kaggle.com/c/generative-dog-images/overview).  
+Výherci (4/5, kteří zveřejnili kód) použili BigGAN, upravený pro generování 64x64x3 obrázků.  
+Soutěž byla omezena na kaggle Kernel, takže by jsme měli být schopní i my použít kaggle kernel, nebo 
+free google colab. Zkusil bych tedy naučit ten BiGGAN (co jsem viděl tak všichni používají PyTorch).  
+Ohlídat si licence!  
+
 * Zkusit naučit SAGAN, možné implementace: 
     1. [TF1 asi nejjednodušší implementace (aktuálně v stažena v repu)](https://github.com/taki0112/Self-Attention-GAN-Tensorflow) 
     2. [TF1 implementace od Google Brain, nutno hodně upravit](https://github.com/brain-research/self-attention-gan?fbclid=IwAR21-JpEZA3TBx1GOGpoLHeGFzR3NgluFsA9BtGNh-CYPVMKJztWT1tIgrs)
@@ -12,7 +19,7 @@
 * Pokud nepůjde naučit SAGAN (nedostatečný výkon, mode collapse, ...), zkusit nějaký jednodušší model:
     1. [TF2 implementace WGAN-GP, DRAGAN](https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Tensorflow-2) 
     2. Hodně implementací je zastaralých :(
-* State of the art modely nenaučíme, nemám na to výpočetní výkon :(, 
+
 StyleGAN, BMSG-GAN, Progressive Growing GAN, BigGAN všechny potřebují minimálně 11GB paměti a učí se v řádech týdnů (ImageNET)
 
 ## Run
