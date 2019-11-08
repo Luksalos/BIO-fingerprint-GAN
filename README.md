@@ -101,7 +101,7 @@ Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?
     Ze tří popsaných publikací je tato rozhodně nejlepší.
 
 
-## GANs SOTA and git@github.com:xstast24/UnIT2019-Nerozumim.git publications
+## GANs SOTA and publications
 * #### [Self-Attention Generative Adversarial Networks (arXiv, May 2018 v1)](https://arxiv.org/abs/1805.08318)
     
 * #### [Spectral Normalization for Generative Adversarial Networks (arXiv, Feb 2018)](https://arxiv.org/abs/1802.05957)
