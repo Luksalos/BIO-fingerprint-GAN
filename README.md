@@ -34,18 +34,15 @@ make docker-run-gpu
 ## Datasets
 
 #### SOCOFing
-[Stáhnout](https://drive.google.com/open?id=1netSFAA3xMxTUw7AwgnmUDvIfSUTPPME) |
 [Dostupné i na Kaggle](https://www.kaggle.com/ruizgara/socofing) (obsahuje duplicitní složky) |
 [Publikace](https://arxiv.org/pdf/1807.10609.pdf) \
 6000 otisků od 600 afrických osob (10x600). Obsahuje nějaké labely viz publikace.
 
 #### CASIA
-[Stáhnout](https://drive.google.com/open?id=1-_qpfFk3nfBn6rd01PHHKJhG2pi9CImv) |
 [Dostupné i zde](http://www.idealtest.org/dbDetailForUser.do?id=7) (nutná registrace) \
 20000 rolovaných otisků od 500 osob (40x500)
 
 #### PolyU Fingerprint Databases
-[Stáhnout](https://drive.google.com/open?id=132CaZCbq4Z92KKo2oBWM4p54wC3BhpCN) |
 [Dostupné i zde](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (nutná registrace) \
 1800 rolovaných otisků od 300 osob. \
 Existuje také [jiný dataset](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm) od stejné skupiny, který nejspíš nejde stáhnout.
@@ -56,7 +53,6 @@ Existuje také [jiný dataset](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF
 1800 otisků od 140 osob (12x140). Dataset obsahuje 4 sady (vždy 1800) otisků získány různými sensory.
 
 #### Datasets from NIST
-[Stáhnout SD04](https://drive.google.com/open?id=1vkwb87E1_fuXUG9q2KHI2mBMWgspxRg_) |
 [Info](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software) \
 Další části nedostupné. Měly by to být desetitisíce otisků (SD14 obsahuje 54K otisků). \
 Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?  
