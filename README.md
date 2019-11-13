@@ -1,5 +1,9 @@
 # BIO-fingerprint-GAN
 
+Stav k 13. 11. 2019:
+* Provedena analýza získaných datasetů, studium SOTA GAN, importována implementace SAGAN.
+* Zbývá tuto implementaci upravit k našim potřebám, síť naučit a analyzovat výsledky.
+
 ## Install
 [Install latest docker for Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)  
 [Install Nvidia Docker](https://github.com/NVIDIA/nvidia-docker)
