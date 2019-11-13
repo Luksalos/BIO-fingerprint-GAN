@@ -1,5 +1,7 @@
 # BIO-fingerprint-GAN
 
+Using https://github.com/taki0112/Self-Attention-GAN-Tensorflow  
+
 Stav k 13. 11. 2019:
 * Provedena analýza získaných datasetů, studium SOTA GAN, importována implementace SAGAN.
 * Zbývá tuto implementaci upravit k našim potřebám, síť naučit a analyzovat výsledky.
