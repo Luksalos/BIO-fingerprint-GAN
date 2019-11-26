@@ -1,41 +1,17 @@
 # BIO-fingerprint-GAN
 
-Using https://github.com/taki0112/Self-Attention-GAN-Tensorflow  
-
-Stav k 13. 11. 2019:
-* Provedena analýza získaných datasetů, studium SOTA GAN, importována implementace SAGAN.
-* Zbývá tuto implementaci upravit k našim potřebám, síť naučit a analyzovat výsledky.
-
-## Install
-[Install latest docker for Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)  
-[Install Nvidia Docker](https://github.com/NVIDIA/nvidia-docker)
-
 ## TODO
-edit 6.11:  
-Na Kaggle před nedávnem proběhla soutěž na [generování psů](https://www.kaggle.com/c/generative-dog-images/overview).  
-Výherci (4/5, kteří zveřejnili kód) použili BigGAN, upravený pro generování 64x64x3 obrázků.  
-Soutěž byla omezena na kaggle Kernel, takže by jsme měli být schopní i my použít kaggle kernel, nebo 
-free google colab. Zkusil bych tedy naučit ten BiGGAN (co jsem viděl tak všichni používají PyTorch).  
-Ohlídat si licence!  
-
-* Zkusit naučit SAGAN, možné implementace: 
-    1. [TF1 asi nejjednodušší implementace (aktuálně v stažena v repu)](https://github.com/taki0112/Self-Attention-GAN-Tensorflow) 
-    2. [TF1 implementace od Google Brain, nutno hodně upravit](https://github.com/brain-research/self-attention-gan?fbclid=IwAR21-JpEZA3TBx1GOGpoLHeGFzR3NgluFsA9BtGNh-CYPVMKJztWT1tIgrs)
-    3. [TF1 implementace používající TF-GAN, ](https://github.com/tensorflow/gan/tree/master/tensorflow_gan/examples/self_attention_estimator)
-* Pokud nepůjde naučit SAGAN (nedostatečný výkon, mode collapse, ...), zkusit nějaký jednodušší model:
-    1. [TF2 implementace WGAN-GP, DRAGAN](https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Tensorflow-2) 
-    2. Hodně implementací je zastaralých :(
-
-StyleGAN, BMSG-GAN, Progressive Growing GAN, BigGAN všechny potřebují minimálně 11GB paměti a učí se v řádech týdnů (ImageNET)
+* Data Processing pro otisky prstů (velice podobně jako je to u těch psů)
+    * Použít SOCOFing, labely použít typ prstu
+    * První učit s 64x64 (oříznout 64x64, neměnit aspect ratio)
+    * Zkusit učit s původními rozměry obrázků (103, 96) (úprava sítě?)
+* Ukládat při učení checkpointy (ukládat na google drive + je umět načítat)
+* Vizualizovat výstupy ze sítě během učení (ne jen nakonci, jak je to teď)
+* Hyperparameter Tuning, zkusit různé objective function, upravit architekturu a celkově zkusit dosáhnout co nejlepších výsledků
+* Zkusit učit na jiných datasetech
 
 ## Run
-```shell script
-# build dev docker image:
-make docker-build
-
-# run container in dev mode (mount local dir + open ports for tensorboard) :
-make docker-run-gpu
-```
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/dog_generating_GAN.ipynb)
 
 ## Datasets
 
@@ -108,12 +84,15 @@ Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?
 
 
 ## GANs SOTA and publications
-* #### [Self-Attention Generative Adversarial Networks (arXiv, May 2018 v1)](https://arxiv.org/abs/1805.08318)
+* #### [StyleGAN - A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv, Dec 2018 v1)](https://arxiv.org/abs/1812.04948)
+
+* #### [BigGAN - Large Scale GAN Training for High Fidelity Natural Image Synthesis (arXiv, Sep 2018 v1)](https://arxiv.org/abs/1809.11096)
+
+* #### [SAGAN - SSelf-Attention Generative Adversarial Networks (arXiv, May 2018 v1)](https://arxiv.org/abs/1805.08318)
     
 * #### [Spectral Normalization for Generative Adversarial Networks (arXiv, Feb 2018)](https://arxiv.org/abs/1802.05957)
     Velkou mírou přispívá k stabilitě učení sítě. Použito např. v SAGAN
 * #### [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium (arXiv, Jun 2017 v1)](https://arxiv.org/abs/1706.08500)
     Použití různě velkého learning rate pro generátor a diskriminator.
-* #### [A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv, Dec 2018 v1)](https://arxiv.org/abs/1812.04948)
 
 * #### [Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv, Oct 2017 v1)](https://arxiv.org/abs/1710.10196)
