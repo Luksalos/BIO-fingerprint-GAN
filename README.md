@@ -1,14 +1,15 @@
 # BIO-fingerprint-GAN
 
 ## TODO
-* Data Processing pro otisky prstů (velice podobně jako je to u těch psů)
-    * Použít SOCOFing, labely použít typ prstu
-    * První učit s 64x64 (oříznout 64x64, neměnit aspect ratio)
-    * Zkusit učit s původními rozměry obrázků (103, 96) (úprava sítě?)
-* Ukládat při učení checkpointy (ukládat na google drive + je umět načítat)
-* Vizualizovat výstupy ze sítě během učení (ne jen nakonci, jak je to teď)
-* Hyperparameter Tuning, zkusit různé objective function, upravit architekturu a celkově zkusit dosáhnout co nejlepších výsledků
-* Zkusit učit na jiných datasetech
+- [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
+- [] Vizualizace dat pro učení sítě (po processingu)
+- [] Zdokumentovat získání datasetu a jeho načtení
+- [] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
+    - [] Zajistit i možnost naštení checkpointu z disku (dobře zdokumentovat). 
+    - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě. 
+- [] Úprava sítě pro naše data
+- [] Úprava sítě pro obdelníkové obrázky
+- [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
 
 ## Run
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
