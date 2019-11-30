@@ -2,31 +2,67 @@
 
 ## TODO
 - [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
-- [] Vizualizace dat pro učení sítě (po processingu)
+- [x] Vizualizace dat pro učení sítě (po processingu)
 - [] Zdokumentovat získání datasetu a jeho načtení
-- [] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
-    - [] Zajistit i možnost naštení checkpointu z disku (dobře zdokumentovat). 
+- [x] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
+    - [] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
     - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě. 
-- [] Úprava sítě pro naše data
-- [] Úprava sítě pro obdelníkové obrázky
+- [x] Úprava sítě pro naše data
+- [x] Úprava sítě pro obdelníkové obrázky
 - [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
+    - porovnat s ostatními (viz. publikace níže)
+- [] Učit síť 64x64 s cropingem
+- [] Učit síť 80x80
+- [] Ušit síť 64x64, nebo 80x80 s random cropingem
+- [] Učit síť 96x96 
+    - Pracuji na tom, Lukáš
+- [] Učit síť s 1 kanálem pro barvu (misto RGB) 
+    - Padá to už na A.Normalize (lze napsat vlastní funkci), ale bude potřeba více drobných úprav.
+- [] vyčistit repo (smazat SAGAN) 
 
 ## Run
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
 
+## Popis použité architektury:
+- Síť založena na BigGAN [Brock et al., 2019] 
+- Spectral Normalization [Miyato et al., 2018] pro lepší stabilitu učení.
+- Self-attention [[Zhang et al., 2018]] - lepší kvalita
+- auxiliary classifier [Odena et al., 2017] - lepší kvalita a stabilita učení.
+- residual blocks [He et al., 2016] - Umožňuje efektivní trénování hlubokých sítí (lepší propagace gradientu), lepší kvalita
+- Minibatch Standard Deviation [Karras et al., 2018] pro lepší rozmanitost generovaných dat.
+- Loss: RaLS [Jolicoeur-Martineau et al., 2019] s váhovanou auxiliary classification loss [Odena et al., 2017]
+- Uniform input noise na reálné obrázky
+- shared embedding 
+
+TODO: až bude dopsáno, přesunout do referencí
+[Brock et al., 2019] Andrew Brock, Jeff Donahue, Karen Simonyan. Large Scale GAN Training for High Fidelity Natural 
+Image Synthesis. In ICLR, 2019.
+[He et al., 2016] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning 
+for image recognition. In CVPR, 2016.
+[Jolicoeur-Martineau et al., 2019] Alexia Jolicoeur-Martineau. The relativistic discriminator: a key element missing 
+from standard GAN. in ICLR, 2019
+[Odena et al., 2017] Augustus Odena, Christopher Olah, and Jonathon Shlens. Conditional image synthesis 
+with auxiliary classifier GANs. In ICML, 2017.
+[Zhang et al., 2018] Han Zhang, Ian Goodfellow, Dimitris Metaxas, and Augustus Odena. Self-attention generative
+adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.  
+[Miyato et al., 2018] Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization
+for generative adversarial networks. In ICLR, 2018.
+[Karras et al., 2018] Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. Progressive Growing of GANs for 
+Improved Quality, Stability, and Variation. In ICLR, 2018
+
 ## Datasets
 
 #### SOCOFing
-[Dostupné i na Kaggle](https://www.kaggle.com/ruizgara/socofing) (obsahuje duplicitní složky) |
+[Dostupné na Kaggle](https://www.kaggle.com/ruizgara/socofing) (obsahuje duplicitní složky) |
 [Publikace](https://arxiv.org/pdf/1807.10609.pdf) \
 6000 otisků od 600 afrických osob (10x600). Obsahuje nějaké labely viz publikace.
 
 #### CASIA
-[Dostupné i zde](http://www.idealtest.org/dbDetailForUser.do?id=7) (nutná registrace) \
+[Dostupné zde](http://www.idealtest.org/dbDetailForUser.do?id=7) (nutná registrace) \
 20000 rolovaných otisků od 500 osob (40x500)
 
 #### PolyU Fingerprint Databases
-[Dostupné i zde](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (nutná registrace) \
+[Dostupné zde](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (nutná registrace) \
 1800 rolovaných otisků od 300 osob. \
 Existuje také [jiný dataset](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm) od stejné skupiny, který nejspíš nejde stáhnout.
 
@@ -96,4 +132,4 @@ Nelze je stáhnout někde jinde? Nemá je někdo z učitelů už stažené?
 * #### [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium (arXiv, Jun 2017 v1)](https://arxiv.org/abs/1706.08500)
     Použití různě velkého learning rate pro generátor a diskriminator.
 
-* #### [Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv, Oct 2017 v1)](https://arxiv.org/abs/1710.10196)
+* #### [ProGAN - Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv, Oct 2017 v1)](https://arxiv.org/abs/1710.10196)
