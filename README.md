@@ -19,6 +19,7 @@
 - [] Učit síť s 1 kanálem pro barvu (misto RGB) 
     - Padá to už na A.Normalize (lze napsat vlastní funkci), ale bude potřeba více drobných úprav.
 - [] vyčistit repo (smazat SAGAN) 
+- [] Přidat licenci a zkontrolovat stávající použití v colabu
 
 ## Run
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
@@ -34,21 +35,21 @@
 - Uniform input noise na reálné obrázky
 - shared embedding 
 
-TODO: až bude dopsáno, přesunout do referencí
+TODO: až bude dopsáno, přesunout do referencí  
 [Brock et al., 2019] Andrew Brock, Jeff Donahue, Karen Simonyan. Large Scale GAN Training for High Fidelity Natural 
-Image Synthesis. In ICLR, 2019.
+Image Synthesis. In ICLR, 2019.  
 [He et al., 2016] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning 
-for image recognition. In CVPR, 2016.
+for image recognition. In CVPR, 2016.  
 [Jolicoeur-Martineau et al., 2019] Alexia Jolicoeur-Martineau. The relativistic discriminator: a key element missing 
-from standard GAN. in ICLR, 2019
+from standard GAN. in ICLR, 2019.  
 [Odena et al., 2017] Augustus Odena, Christopher Olah, and Jonathon Shlens. Conditional image synthesis 
-with auxiliary classifier GANs. In ICML, 2017.
+with auxiliary classifier GANs. In ICML, 2017.  
 [Zhang et al., 2018] Han Zhang, Ian Goodfellow, Dimitris Metaxas, and Augustus Odena. Self-attention generative
-adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.  
+adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.   
 [Miyato et al., 2018] Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization
-for generative adversarial networks. In ICLR, 2018.
+for generative adversarial networks. In ICLR, 2018.  
 [Karras et al., 2018] Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. Progressive Growing of GANs for 
-Improved Quality, Stability, and Variation. In ICLR, 2018
+Improved Quality, Stability, and Variation. In ICLR, 2018  
 
 ## Datasets
 
