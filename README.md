@@ -5,8 +5,9 @@
 - [x] Vizualizace dat pro učení sítě (po processingu)
 - [] Zdokumentovat získání datasetu a jeho načtení
 - [x] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
-    - [] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
-    - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě. 
+    - [x] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
+    - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě.
+       - Ten LR by se kvůli decay měl určitě ukládat, ale ta decay funkce se mi zdá být nějaká divná ...
 - [x] Úprava sítě pro naše data
 - [x] Úprava sítě pro obdelníkové obrázky
 - [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
