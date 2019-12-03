@@ -3,7 +3,7 @@
 ## TODO
 - [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
 - [x] Vizualizace dat pro učení sítě (po processingu)
-- [] Zdokumentovat získání datasetu a jeho načtení
+- [x] Zdokumentovat získání datasetu a jeho načtení
 - [x] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
     - [x] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
     - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě.
@@ -19,6 +19,7 @@
     - Pracuji na tom, Lukáš
 - [] Učit síť s 1 kanálem pro barvu (misto RGB) 
     - Padá to už na A.Normalize (lze napsat vlastní funkci), ale bude potřeba více drobných úprav.
+    - Podívám se na to. (Honza)
 - [x] Vyčistit repo (smazat SAGAN) 
 - [] Přidat licenci a zkontrolovat stávající použití v Colabu
 - [] Přesunout zdroje v popisu architektury do referencí v dokumentaci
