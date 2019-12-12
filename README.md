@@ -6,20 +6,14 @@
 - [x] Zdokumentovat získání datasetu a jeho načtení
 - [x] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
     - [x] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
-    - [] Ověřit, jestli neni potřeba ukládat zvlášť i jiné časově závislé parametry použité pro učení sítě.
-       - Ten LR by se kvůli decay měl určitě ukládat, ale ta decay funkce se mi zdá být nějaká divná ...
 - [x] Úprava sítě pro naše data
 - [x] Úprava sítě pro obdelníkové obrázky
 - [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
     - porovnat s ostatními (viz. publikace níže)
-- [] Učit síť 64x64 s cropingem
-- [] Učit síť 80x80
 - [] Učit síť 64x64, nebo 80x80 s random cropingem
-- [] Učit síť 96x96 
-    - Pracuji na tom, Lukáš
-- [] Učit síť s 1 kanálem pro barvu (misto RGB) 
-    - Padá to už na A.Normalize (lze napsat vlastní funkci), ale bude potřeba více drobných úprav.
-    - Podívám se na to. (Honza)
+- [x] Učit síť 96x96 
+- [x] Učit síť s 1 kanálem pro barvu (misto RGB) 
+    - hotovo v s96-param_tuning brachi
 - [x] Vyčistit repo (smazat SAGAN) 
 - [] Přidat licenci a zkontrolovat stávající použití v Colabu
 - [] Přesunout zdroje v popisu architektury do referencí v dokumentaci
