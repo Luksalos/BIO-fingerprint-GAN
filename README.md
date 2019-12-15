@@ -59,6 +59,14 @@ Improved Quality, Stability, and Variation. In ICLR, 2018
 - NIST datasets | [Info](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software)
   - Další části nedostupné. Měly by to být desetitisíce otisků (SD14 obsahuje 54K otisků).
 
+## Evaluation
+
+Žádný standardizovaný vyhodnocovací model. Často se používá např. Inception Score, které ale využívá síť naučenou na ImageNetu, což je pro otisky prstů nejspíš irelevantní. Doporučuje se 1NN ve spojením s manuálním vyhodnocením.
+
+- [Xu Q. et al., 2018] [An empirical study on evaluation metrics of generative adversarial networks](https://arxiv.org/pdf/1806.07755.pdf)
+- [Borji A., 2018] [Pros and Cons of GAN Evaluation Measures](https://arxiv.org/pdf/1802.03446.pdf)
+- [Shmelkov K., Schmid C., Alahari K, 2018] [How good is my GAN?](https://hal.inria.fr/hal-01850447/document)
+
 ## Related Work
 
 ### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)
