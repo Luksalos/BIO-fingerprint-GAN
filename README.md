@@ -1,4 +1,4 @@
-# BIO: generování otisků prstů s GAN
+# BIO: Generování syntetického otisku prstu pomocí GAN
 
 ## TODO
 - [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
@@ -10,7 +10,6 @@
 - [x] Úprava sítě pro obdelníkové obrázky
 - [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
     - porovnat s ostatními (viz. publikace níže)
-- [] Učit síť 64x64, nebo 80x80 s random cropingem
 - [x] Učit síť 96x96 
 - [x] Učit síť s 1 kanálem pro barvu (misto RGB) 
     - hotovo v s96-param_tuning brachi
