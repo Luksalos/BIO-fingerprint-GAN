@@ -1,0 +1,3 @@
+[submodule "python-fingerprint-recognition"]
+	path = python-fingerprint-recognition
+	url = https://github.com/kjanko/python-fingerprint-recognition
