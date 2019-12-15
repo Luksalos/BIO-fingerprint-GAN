@@ -18,7 +18,7 @@
 - [] Přesunout zdroje v popisu architektury do referencí v dokumentaci
 
 ## Run
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/semantic-evaluation/fingerprint_BigGAN.ipynb)
 
 ## Popis použité architektury:
 - Síť založena na BigGAN [Brock et al., 2019]
