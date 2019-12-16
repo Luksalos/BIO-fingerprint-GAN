@@ -1,5 +1,41 @@
 # BIO: Generování syntetického otisku prstu pomocí GAN
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
+
+Tento projekt byl vypracován v rámci předmětu **biometrické systémy** na Fakultě informačních technologií Vysokého učení technického v Brně. Cílem projektu je generovat syntetické otisky prstu pomocí generativní adversiální sítě (GAN).
+
+## Úvod
+
+GAN je typ strojového učení představený v roce 2014 používaný pro generování nových dat z určité distribuce [1]. Princip spočívá v soutěžení dvou neuronových sítí: generátoru nových dat a diskriminátoru, který se snaží odlišit reálná data od těch vygenerovaných.
+
+## Hledání datasetu
+
+Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety amerického NISTu. Po zvážení několika kandidátů [2] [3] [4] jsme zvolili dataset SOCOFing dostupný na Kaggle [5] pro relativně kvalitní snímky otisků a kompaktnost. Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, aby šly snadno integrovat do nějaké z existujících architektur GAN. V názvech obrázků datasetu byly zakódované informace o pohlaví a typu prstu, které jsme extrahovali a při trénování použili pro kategorizaci dat.
+
+## Volba architektury
+
+Po nastudování řady různých achitektur [6] [7] [8] [9] jsme jako základ našeho modelu jsme zvolili existující implementaci [10] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+
+## Učící infrastruktura
+
+Náš model jsme implementovali v Pythonu, formou Jupyter Notebooku. Tento formát umožnuje rychlé prototypování a přehlednou vizualizaci dat.
+
+Zpočátku bylo možné menší/jednodušší verze našeho modelu učit na běžných stolních počítačích disponujících grafickou kartou NVIDIA GTX 1060 s 6 GB VRAM. Po zvětšení našeho modelu bylo ale třeba více paměti a proto jsme náš projekt hostovali na Google Colab - službu, jež zdarma poskytuje výpočetní GPU výkon.
+
+Zajímavé obrázky náš model generuje po cca 10 tisících iteracích, které na jedné grafické kartě NVIDIA TESLA P100 běží zhruba 5 hodin.
+
+## Vyhodnocení
+
+Vyhodnocování kvality GAN je stále oblastní aktivního výzkumu a prozatím neexistuje standardizovaná generická metoda. Často používané metriky jsou Inception Score [11] a Fréchet Inception Distance [12], které využívají model naučený na datasetu ImageNet. Jelikož tento dataset ale neobsahuje žádné otisky prstů, použití těchto modelů pro náš účel nejspíš nedává smysl.
+
+Podle některých zdrojů [13] může být vhodnou metrikou např. manuální porovnávání vygenerovaných obrázků s jejich nejbližšími sousedy z trénovacího datasetu (ve smyslu Nearest Neighbor klasifikátoru). Touto metodou by se dalo zjistit, jak unikátní data je generátor schopný vytvořit. Při použití Nearest Neighbor jsme sice získali páry otisků, které jsou si tvarově podobné, zpravidla však byly markantově naprosto odlišné.
+
+Pokusili jsme se tedy hledat páry obrázků na základě podobnosti markantů. Pro tento účel jsme použili Java knihovnu SourceAFIS [14], která ovšem párovala diametrálně odlišné otisky. Doposud jsme nezjistili příčinu špatné funkčnosti. Je možné, že detektoru markantů dělaly potíže lehké artefakty, které se objevují na vygenerovaných obrázcích.
+
+## Závěr
+
+Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů založený na GAN. Při manuální inspekci vygenerované obrázky v drtivé většině případů vypadají jako reálné otisky a obsahují rozpoznatelné markanty. Je však třeba více prozkoumat možnosti kvantitativního vyhodnocení generátorů.
+
 ## TODO
 - [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
 - [x] Vizualizace dat pro učení sítě (po processingu)
@@ -18,7 +54,7 @@
 - [] Přesunout zdroje v popisu architektury do referencí v dokumentaci
 
 ## Run
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
+
 
 ## Popis použité architektury:
 - Síť založena na BigGAN [Brock et al., 2019]
