@@ -89,7 +89,7 @@ Do budoucna by bylo vhodné implementovat automatizované vyhodnocení kvality a
 
 [4] FVC2006, dostupné zde: [atvs.ii.uam.es](http://atvs.ii.uam.es/atvs/fvc2006.html) (po registraci učitele)
 
-[5] NIST dataset SD04, dostupné z neoficiálních zdrovů.
+[5] NIST dataset SD04, dostupné z neoficiálních zdrojů.
 
 [6] SOCOFing, dostupné zde: [kaggle.com](https://www.kaggle.com/ruizgara/socofing).
 
