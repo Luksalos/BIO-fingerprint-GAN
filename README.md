@@ -67,6 +67,10 @@ Podařilo se nám vytvořit funkční generátor otisků prstů založený na GA
 otisků vypadá jako reálné otisky a obsahují rozpoznatelné markanty.
 Do budoucna by bylo vhodné implementovat automatizované vyhodnocení kvality a diverzity generovaných dat.
 
+---
+
+## Přílohy
+
 ### Trénovací data
 ![alt test](data/train-1.png)
 
