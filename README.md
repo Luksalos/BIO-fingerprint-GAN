@@ -16,7 +16,11 @@ Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků pr
 
 ## Volba architektury
 
-Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ našeho modelu jsme zvolili existující implementaci [21] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ našeho modelu jsme zvolili existující implementaci [21] architektury BigGAN.
+
+Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+
+* TODO: popsat, jak zhruba funguje a co přesně jsme na ní pozměnili
 
 ## Učicí infrastruktura
 
