@@ -1,18 +1,17 @@
 # BIO: Generování syntetických otisků prstů pomocí GAN
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb) | [GitHub repozitář](https://github.com/Luksalos/BIO-fingerprint-GAN)
 
 Tento projekt byl vypracován v rámci předmětu **biometrické systémy** na Fakultě informačních technologií 
 Vysokého učení technického v Brně. Cílem projektu je generovat syntetické otisky prstu pomocí 
 generative adversarial networks (GAN).
 
-Autoři: Lukáš Salvet, xsalve02, Jan Svoboda, xsvobo0s
+Autoři: Lukáš Salvet (xsalve02), Jan Svoboda (xsvobo0s).
 
 ## Úvod
 
 GAN je typ neuronové sítě představený v roce 2014 používaný, mimo jiné pro generování nových dat z určité distribuce [1]. 
-Princip spočívá v soutěžení dvou neuronových sítí: generátoru, který generuje dat z náhodné šumu a diskriminátoru, který se snaží 
-odlišit reálná data od těch vygenerovaných.
+Princip spočívá v soutěžení dvou neuronových sítí: generátoru, který generuje dat z náhodné šumu a diskriminátoru, který se snaží odlišit reálná data od těch vygenerovaných.
 
 ## Hledání datasetu
 
@@ -31,17 +30,26 @@ Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] 
 a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ modelu použili existující 
 implementaci [21] architektury BigGAN.
 
-Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). 
-Zároveň jsme implementovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+### Popis použité architektury
+
+* Síť založena na BigGAN [Brock et al., 2019].
+* Spectral Normalization [Miyato et al., 2018] pro lepší stabilitu učení.
+* Self-attention [[Zhang et al., 2018]] - lepší kvalita.
+* Auxiliary classifier [Odena et al., 2017] - lepší kvalita a stabilita učení.
+* Residual blocks [He et al., 2016] - umožňuje efektivní trénování hlubokých sítí (lepší propagace gradientu), lepší kvalita.
+* Minibatch Standard Deviation [Karras et al., 2018] pro lepší rozmanitost generovaných dat.
+* Loss: RaLS [Jolicoeur-Martineau et al., 2019] s váhovanou auxiliary classification loss [Odena et al., 2017].
+* Uniform input noise na reálné obrázky.
+* Shared embedding.
+
+Síť jsme dále pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme implementovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
 
 Subjektivně kvalitní obrázky náš model generuje po cca 10 tisících iteracích učení, které na jedné grafické kartě NVIDIA TESLA P100 trvá zhruba 5 hodin.
 
 ## Vyhodnocení
 
 Vyhodnocování kvality GAN je stále oblastní aktivního výzkumu a prozatím neexistuje standardizovaná generická metoda. 
-Často používané metriky jsou Inception Score [11] a Fréchet Inception Distance [12], které používají model naučený na datasetu ImageNet 
-pro získání features, nad kterými pak provádí další analýzu. 
-Jelikož tento dataset ale neobsahuje žádné otisky prstů, použití těchto modelů pro náš účel nejspíš nedává smysl.
+Často používané metriky jsou Inception Score [11] a Fréchet Inception Distance [12], které používají model naučený na datasetu ImageNet pro získání příznaků, nad kterými pak provádí další analýzu. Jelikož tento dataset ale neobsahuje žádné otisky prstů, použití těchto modelů pro náš účel nejspíš nedává smysl.
 
 Podle některých zdrojů [13] může být vhodnou metrikou např. manuální porovnávání vygenerovaných obrázků 
 s jejich nejbližšími sousedy z trénovacího datasetu (ve smyslu Nearest Neighbor klasifikátoru). Touto metodou by se dalo zjistit, 
@@ -55,26 +63,16 @@ markantů dělaly potíže lehké artefakty, které se objevují na vygenerovan�
 ## Závěr
 
 Podařilo se nám vytvořit funkční generátor otisků prstů založený na GAN. Tento model by měl být lehce
-škálovatelný (podle [Brock et al., 2019]) i pro generování snímků s větším rozlišením. Při manuální inspekci vygenerovaných 
+škálovatelný [7] i pro generování snímků s větším rozlišením. Při manuální inspekci vygenerovaných 
 otisků v drtivé většině případů vypadají jako reálné otisky a obsahují rozpoznatelné markanty. 
 Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a diverzity generovaných dat.
-
-## Popis použité architektury:
-- Síť založena na BigGAN [Brock et al., 2019]
-- Spectral Normalization [Miyato et al., 2018] pro lepší stabilitu učení.
-- Self-attention [[Zhang et al., 2018]] - lepší kvalita
-- Auxiliary classifier [Odena et al., 2017] - lepší kvalita a stabilita učení.
-- Residual blocks [He et al., 2016] - Umožňuje efektivní trénování hlubokých sítí (lepší propagace gradientu), lepší kvalita
-- Minibatch Standard Deviation [Karras et al., 2018] pro lepší rozmanitost generovaných dat.
-- Loss: RaLS [Jolicoeur-Martineau et al., 2019] s váhovanou auxiliary classification loss [Odena et al., 2017]
-- Uniform input noise na reálné obrázky
-- Shared embedding 
 
 ### Trénovací data
 ![alt test](data/train-1.png)
 
 ### Vygenerované obrázky
-![alt test](data/step-23808.png) \\
+![alt test](data/step-23808.png)
+
 ![alt test](data/gen-24576-1.png)
 
 ---
@@ -99,17 +97,13 @@ Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a dive
 
 [[10]](https://arxiv.org/abs/1610.09585) Augustus Odena, Christopher Olah, Jonathon Shlens. *Conditional image synthesis with auxiliary classifier GANs*, 2017.
 
-[[11]](https://arxiv.org/abs/1805.08318) Han Zhang, Ian Goodfellow, Dimitris Metaxas, Augustus Odena. *Self-attention generative adversarial networks*, 2018.
+[[11]](https://arxiv.org/abs/1805.08318) Han Zhang, Ian Goodfellow, Dimitris Metaxas, Augustus Odena. *Self-attention generative adversarial networks*, 2019.
 
 [[12]](https://arxiv.org/abs/1802.05957) Takeru Miyato, Toshiki Kataoka, Masanori Koyama, Yuichi Yoshida. *Spectral normalization for generative adversarial networks*, 2018.
 
 [[13]](https://arxiv.org/abs/1710.10196) Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. *Progressive Growing of GANs for Improved Quality, Stability, and Variation*, 2018.
 
 [[14]](https://arxiv.org/abs/1812.04948) Tero Karras, Samuli Laine, Timo Aila. *A Style-Based Generator Architecture for Generative Adversarial Networks*, 2018.
-
-[[15]](https://arxiv.org/abs/1809.11096) Andrew Brock, Jeff Donahue, Karen Simonyan. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
-
-[[16]](https://arxiv.org/abs/1805.08318) Han Zhang, Ian Goodfellow, Dimitris Metaxas, Augustus Odena. *Self-Attention Generative Adversarial Networks*, 2019.
 
 [[17]](https://arxiv.org/abs/1706.08500) Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, Sepp Hochreiter. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
 
