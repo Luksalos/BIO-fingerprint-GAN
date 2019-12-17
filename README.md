@@ -79,7 +79,7 @@ Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a dive
 
 ---
 
-[1] Goodfellow et al., *Generative Adversarial Networks*, 2014.
+[[1]](https://arxiv.org/abs/1406.2661) Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. *Generative Adversarial Networks*, 2014.
 
 [2] CASIA FingerprintV5, dostupné zde: [idealtest.org](http://www.idealtest.org/dbDetailForUser.do?id=7) (po registraci).
 
@@ -91,33 +91,33 @@ Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a dive
 
 [6] SOCOFing, dostupné zde: [kaggle.com](https://www.kaggle.com/ruizgara/socofing).
 
-[7] Brock et al. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
+[[7]](https://arxiv.org/abs/1809.11096) Andrew Brock, Jeff Donahue, Karen Simonyan. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
 
-[8] He et al. *Deep residual learning for image recognition*, 2016.
+[[8]](https://arxiv.org/abs/1512.03385) Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun. *Deep residual learning for image recognition*, 2016.
 
-[9] Jolicoeur-Martineau et al. *The relativistic discriminator: a key element missing from standard GAN*, 2019.
+[[9]](https://arxiv.org/abs/1807.00734) Alexia Jolicoeur-Martineau. *The relativistic discriminator: a key element missing from standard GAN*, 2019.
 
-[10] Odena et al. *Conditional image synthesis with auxiliary classifier GANs*, 2017.
+[[10]](https://arxiv.org/abs/1610.09585) Augustus Odena, Christopher Olah, Jonathon Shlens. *Conditional image synthesis with auxiliary classifier GANs*, 2017.
 
-[11] Zhang et al. *Self-attention generative adversarial networks*, 2018.
+[[11]](https://arxiv.org/abs/1805.08318) Han Zhang, Ian Goodfellow, Dimitris Metaxas, Augustus Odena. *Self-attention generative adversarial networks*, 2018.
 
-[12] Miyato et al. *Spectral normalization for generative adversarial networks*, 2018.
+[[12]](https://arxiv.org/abs/1802.05957) Takeru Miyato, Toshiki Kataoka, Masanori Koyama, Yuichi Yoshida. *Spectral normalization for generative adversarial networks*, 2018.
 
-[13] Karras et al. *Progressive Growing of GANs for Improved Quality, Stability, and Variation*, 2018.
+[[13]](https://arxiv.org/abs/1710.10196) Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. *Progressive Growing of GANs for Improved Quality, Stability, and Variation*, 2018.
 
-[14] Karras et al. *A Style-Based Generator Architecture for Generative Adversarial Networks*, 2018.
+[[14]](https://arxiv.org/abs/1812.04948) Tero Karras, Samuli Laine, Timo Aila. *A Style-Based Generator Architecture for Generative Adversarial Networks*, 2018.
 
-[15] Brock et al. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
+[[15]](https://arxiv.org/abs/1809.11096) Andrew Brock, Jeff Donahue, Karen Simonyan. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
 
-[16] Zhang et al. *Self-Attention Generative Adversarial Networks*, 2019.
+[[16]](https://arxiv.org/abs/1805.08318) Han Zhang, Ian Goodfellow, Dimitris Metaxas, Augustus Odena. *Self-Attention Generative Adversarial Networks*, 2019.
 
-[17] Heusel et al. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
+[[17]](https://arxiv.org/abs/1706.08500) Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, Sepp Hochreiter. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
 
-[18] Minaee et al. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
+[[18]](https://arxiv.org/abs/1812.10482) Shervin Minaee, Amirali Abdolrashidi. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
 
-[19] Bontrager et al. *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
+[[19]](https://arxiv.org/abs/1705.07386) Philip Bontrager, Aditi Roy, Julian Togelius, Nasir Memon, Arun Ross. *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
 
-[20] Cao et al. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
+[[20]](https://ieeexplore.ieee.org/document/8411200) Kai Cao, Anil Jain. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
 [21] RaLS AC-BigGAN with MinibatchStddev, dostupné zde: [kaggle.com](https://www.kaggle.com/yukia18/sub-rals-ac-biggan-with-minibatchstddev).
 
