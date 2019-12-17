@@ -89,11 +89,11 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 
 [17] Heusel et al. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
 
-[18] Minaee and Abdolrashidi, *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
+[18] Minaee et al. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
 
 [19] Bontrager et al., *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
 
-[20] Cao and Jain, *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
+[20] Cao et al. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
 [21] RaLS AC-BigGAN with MinibatchStddev, dostupné zde: [kaggle.com](https://www.kaggle.com/yukia18/sub-rals-ac-biggan-with-minibatchstddev).
 
