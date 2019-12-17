@@ -91,7 +91,7 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 
 [18] Minaee et al. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
 
-[19] Bontrager et al., *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
+[19] Bontrager et al. *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
 
 [20] Cao et al. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
