@@ -2,43 +2,43 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luksalos/BIO-fingerprint-GAN/blob/master/fingerprint_BigGAN.ipynb) | [GitHub repozitář](https://github.com/Luksalos/BIO-fingerprint-GAN)
 
-Tento projekt byl vypracován v rámci předmětu **biometrické systémy** na Fakultě informačních technologií 
-Vysokého učení technického v Brně. Cílem projektu je generovat syntetické otisky prstu pomocí 
+Tento projekt byl vypracován v rámci předmětu **biometrické systémy** na Fakultě informačních technologií
+Vysokého učení technického v Brně. Cílem projektu je generovat syntetické otisky prstu pomocí
 generative adversarial networks (GAN).
 
 Autoři: Lukáš Salvet (xsalve02), Jan Svoboda (xsvobo0s).
 
 ## Úvod
 
-GAN je typ neuronové sítě představený v roce 2014 používaný, mimo jiné pro generování nových dat z určité distribuce [1]. 
+GAN je typ neuronové sítě představený v roce 2014 používaný, mimo jiné pro generování nových dat z určité distribuce [1].
 Princip spočívá v soutěžení dvou neuronových sítí: generátoru, který generuje dat z náhodné šumu a diskriminátoru, který se snaží odlišit reálná data od těch vygenerovaných.
 
 ## Hledání datasetu
 
-Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety 
-společnosti NIST. Po zvážení několika kandidátů [2] [3] [4] [5] jsme zvolili dataset SOCOFing dostupný na Kaggle [6] 
+Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety
+společnosti NIST. Po zvážení několika kandidátů [2] [3] [4] [5] jsme zvolili dataset SOCOFing dostupný na Kaggle [6]
 pro největší množství otisků a relativně kvalitní snímky.
 
-Dataset bylo nutno upravit - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, 
-aby seděli na downsampling jednotlivých vrstev použité neuronové sítě. V názvech obrázků datasetu byly zakódovány 
+Dataset bylo nutno upravit - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak,
+aby seděli na downsampling jednotlivých vrstev použité neuronové sítě. V názvech obrázků datasetu byly zakódovány
 informace o typu prstu a pohlaví subjektu. Tyto informace jsme použili při učení sítě. Je předpoklad, že pokud by se
-jednotlivé kategorie od sebe lišili, pomůžou tyto informace síti při učení. 
+jednotlivé kategorie od sebe lišili, pomůžou tyto informace síti při učení.
 
 ## Volba architektury
 
-Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] 
-a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ modelu použili existující 
-implementaci [21] architektury BigGAN.
+Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15]
+a několika publikací zabývajících se generováním otisků prstů [16] [17] [18] jsme jako základ modelu použili existující
+implementaci [19] architektury BigGAN.
 
 ### Popis použité architektury
 
-* Síť založena na BigGAN [Brock et al., 2019].
-* Spectral Normalization [Miyato et al., 2018] pro lepší stabilitu učení.
-* Self-attention [[Zhang et al., 2018]] - lepší kvalita.
-* Auxiliary classifier [Odena et al., 2017] - lepší kvalita a stabilita učení.
-* Residual blocks [He et al., 2016] - umožňuje efektivní trénování hlubokých sítí (lepší propagace gradientu), lepší kvalita.
-* Minibatch Standard Deviation [Karras et al., 2018] pro lepší rozmanitost generovaných dat.
-* Loss: RaLS [Jolicoeur-Martineau et al., 2019] s váhovanou auxiliary classification loss [Odena et al., 2017].
+* Síť založena na BigGAN [7].
+* Spectral Normalization [12] pro lepší stabilitu učení.
+* Self-attention [11] pro lepší kvalitu.
+* Auxiliary classifier [10] pro lepší kvalitu a stabilitu učení.
+* Residual blocks [8] umožňují efektivní trénování hlubokých sítí (lepší propagace gradientu), lepší kvalita.
+* Minibatch Standard Deviation [13] pro lepší rozmanitost generovaných dat.
+* Loss: RaLS [9] s váhovanou auxiliary classification loss [10].
 * Uniform input noise na reálné obrázky.
 * Shared embedding.
 
@@ -48,24 +48,24 @@ Subjektivně kvalitní obrázky náš model generuje po cca 10 tisících iterac
 
 ## Vyhodnocení
 
-Vyhodnocování kvality GAN je stále oblastní aktivního výzkumu a prozatím neexistuje standardizovaná generická metoda. 
-Často používané metriky jsou Inception Score [11] a Fréchet Inception Distance [12], které používají model naučený na datasetu ImageNet pro získání příznaků, nad kterými pak provádí další analýzu. Jelikož tento dataset ale neobsahuje žádné otisky prstů, použití těchto modelů pro náš účel nejspíš nedává smysl.
+Vyhodnocování kvality GAN je stále oblastní aktivního výzkumu a prozatím neexistuje standardizovaná generická metoda.
+Často používané metriky jsou Inception Score a Fréchet Inception Distance [20] [21], které používají model naučený na datasetu ImageNet pro získání příznaků, nad kterými pak provádí další analýzu. Jelikož tento dataset ale neobsahuje žádné otisky prstů, použití těchto modelů pro náš účel nejspíš nedává smysl.
 
-Podle některých zdrojů [13] může být vhodnou metrikou např. manuální porovnávání vygenerovaných obrázků 
-s jejich nejbližšími sousedy z trénovacího datasetu (ve smyslu Nearest Neighbor klasifikátoru). Touto metodou by se dalo zjistit, 
-jak unikátní data je generátor schopný vytvořit. Při použití Nearest Neighbor jsme sice získali páry otisků, které jsou si tvarově podobné, 
+Podle některých zdrojů [22] může být vhodnou metrikou např. manuální porovnávání vygenerovaných obrázků
+s jejich nejbližšími sousedy z trénovacího datasetu (ve smyslu Nearest Neighbor klasifikátoru). Touto metodou by se dalo zjistit,
+jak unikátní data je generátor schopný vytvořit. Při použití Nearest Neighbor jsme sice získali páry otisků, které jsou si tvarově podobné,
 zpravidla však byly markantově naprosto odlišné.
 
-Pokusili jsme se tedy hledat páry obrázků na základě podobnosti markantů. Pro tento účel jsme použili Java knihovnu SourceAFIS [14], 
-která ovšem párovala diametrálně odlišné otisky. Doposud jsme nezjistili příčinu špatné funkčnosti. Je možné, že detektoru 
+Pokusili jsme se tedy hledat páry obrázků na základě podobnosti markantů. Pro tento účel jsme použili Java knihovnu SourceAFIS [23],
+která ovšem párovala diametrálně odlišné otisky. Doposud jsme nezjistili příčinu špatné funkčnosti. Je možné, že detektoru
 markantů dělaly potíže lehké artefakty, které se objevují na vygenerovaných obrázcích.
 
 ## Závěr
 
 Podařilo se nám vytvořit funkční generátor otisků prstů založený na GAN. Tento model by měl být lehce
-škálovatelný [7] i pro generování snímků s větším rozlišením. Při manuální inspekci vygenerovaných 
-otisků v drtivé většině případů vypadají jako reálné otisky a obsahují rozpoznatelné markanty. 
-Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a diverzity generovaných dat.
+škálovatelný [7] i pro generování snímků s větším rozlišením. Při manuální inspekci většina vygenerovaných
+otisků vypadá jako reálné otisky a obsahují rozpoznatelné markanty.
+Do budoucna by bylo vhodné implementovat automatizované vyhodnocení kvality a diverzity generovaných dat.
 
 ### Trénovací data
 ![alt test](data/train-1.png)
@@ -105,18 +105,20 @@ Do budoucna by to chtělo implementovat automatické vyhodnocení kvality a dive
 
 [[14]](https://arxiv.org/abs/1812.04948) Tero Karras, Samuli Laine, Timo Aila. *A Style-Based Generator Architecture for Generative Adversarial Networks*, 2018.
 
-[[17]](https://arxiv.org/abs/1706.08500) Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, Sepp Hochreiter. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
+[[15]](https://arxiv.org/abs/1706.08500) Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, Sepp Hochreiter. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
 
-[[18]](https://arxiv.org/abs/1812.10482) Shervin Minaee, Amirali Abdolrashidi. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
+[[16]](https://arxiv.org/abs/1812.10482) Shervin Minaee, Amirali Abdolrashidi. *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
 
-[[19]](https://arxiv.org/abs/1705.07386) Philip Bontrager, Aditi Roy, Julian Togelius, Nasir Memon, Arun Ross. *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
+[[17]](https://arxiv.org/abs/1705.07386) Philip Bontrager, Aditi Roy, Julian Togelius, Nasir Memon, Arun Ross. *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
 
-[[20]](https://ieeexplore.ieee.org/document/8411200) Kai Cao, Anil Jain. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
+[[18]](https://ieeexplore.ieee.org/document/8411200) Kai Cao, Anil Jain. *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
-[21] RaLS AC-BigGAN with MinibatchStddev, dostupné zde: [kaggle.com](https://www.kaggle.com/yukia18/sub-rals-ac-biggan-with-minibatchstddev).
+[19] RaLS AC-BigGAN with MinibatchStddev, dostupné zde: [kaggle.com](https://www.kaggle.com/yukia18/sub-rals-ac-biggan-with-minibatchstddev).
 
-## Evaluation
+[[20]](https://arxiv.org/abs/1802.03446) Ali Borji. *Pros and Cons of GAN Evaluation Measures*, 2018.
 
-- [Xu Q. et al., 2018] [An empirical study on evaluation metrics of generative adversarial networks](https://arxiv.org/pdf/1806.07755.pdf)
-- [Borji A., 2018] [Pros and Cons of GAN Evaluation Measures](https://arxiv.org/pdf/1802.03446.pdf)
-- [Shmelkov K., Schmid C., Alahari K, 2018] [How good is my GAN?](https://hal.inria.fr/hal-01850447/document)
+[[21]](https://arxiv.org/abs/1807.09499) Konstantin Shmelkov, Cordelia Schmid, Karteek Alahari, *How good is my GAN?*, 2018.
+
+[[22]](https://arxiv.org/abs/1806.07755) Qiantong Xu, Gao Huang, Yang Yuan, Chuan Guo, Yu Sun, Felix Wu, Kilian Weinberger. *An empirical study on evaluation metrics of generative adversarial networks*, 2018.
+
+[23] Knihovna Source, dostupná zde: [sourceafis.machinezoo.com](https://sourceafis.machinezoo.com/).
