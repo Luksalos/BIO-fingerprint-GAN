@@ -26,7 +26,7 @@ Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve vě
 
 Náš model jsme implementovali v Pythonu, formou Jupyter Notebooku. Tento formát umožnuje rychlé prototypování a přehlednou vizualizaci dat.
 
-Zpočátku bylo možné menší/jednodušší verze našeho modelu učit na běžných stolních počítačích disponujících grafickou kartou NVIDIA GTX 1060 s 6 GB VRAM. Po zvětšení našeho modelu bylo ale třeba více paměti a proto jsme náš projekt hostovali na Google Colab - službu, jež zdarma poskytuje výpočetní GPU výkon.
+Zpočátku bylo možné menší/jednodušší verze našeho modelu učit na běžných stolních počítačích disponujících grafickou kartou NVIDIA GTX 1060 s 6 GB VRAM. Po zvětšení našeho modelu bylo ale třeba více paměti a proto jsme náš projekt hostovali na Google Colab - službě, jež zdarma poskytuje výpočetní GPU výkon.
 
 Subjektivně kvalitní obrázky náš model generuje po cca 10 tisících iteracích učení, které na jedné grafické kartě NVIDIA TESLA P100 trvá zhruba 5 hodin.
 
