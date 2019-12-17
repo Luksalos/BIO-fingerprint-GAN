@@ -55,7 +55,7 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 
 ---
 
-[1] Goodfellow I. et al., *Generative Adversarial Networks*, 2014.
+[1] Goodfellow et al., *Generative Adversarial Networks*, 2014.
 
 [2] CASIA FingerprintV5, dostupné zde: [idealtest.org](http://www.idealtest.org/dbDetailForUser.do?id=7) (po registraci).
 
