@@ -10,13 +10,15 @@ GAN je typ strojového učení představený v roce 2014 používaný pro genero
 
 ## Hledání datasetu
 
-Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety amerického NISTu. Po zvážení několika kandidátů [2] [3] [4] [5] jsme zvolili dataset SOCOFing dostupný na Kaggle [6] pro relativně kvalitní snímky otisků a kompaktnost. Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, aby šly snadno integrovat do nějaké z existujících architektur GAN. V názvech obrázků datasetu byly zakódované informace o typu prstu a pohlaví subjektu, které jsme extrahovali a při trénování použili pro kategorizaci dat.
+Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety amerického NISTu. Po zvážení několika kandidátů [2] [3] [4] [5] jsme zvolili dataset SOCOFing dostupný na Kaggle [6] pro relativně kvalitní snímky otisků a kompaktnost.
+
+Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, aby šly snadno integrovat do nějaké z existujících architektur GAN. V názvech obrázků datasetu byly zakódované informace o typu prstu a pohlaví subjektu, které jsme extrahovali a při trénování použili pro kategorizaci dat.
 
 ## Volba architektury
 
-Po nastudování řady různých achitektur [6] [7] [8] [9] jsme jako základ našeho modelu jsme zvolili existující implementaci [10] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ našeho modelu jsme zvolili existující implementaci [10] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
 
-## Učící infrastruktura
+## Učicí infrastruktura
 
 Náš model jsme implementovali v Pythonu, formou Jupyter Notebooku. Tento formát umožnuje rychlé prototypování a přehlednou vizualizaci dat.
 
@@ -49,33 +51,45 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 
 ---
 
-[1] Goodfellow I.J. et al., *Generative Adversarial Networks*, 2014.
+[1] Goodfellow I. et al., *Generative Adversarial Networks*, 2014.
 
-[2] CASIA FingerprintV5, Dostupné zde: [idealtest.org](http://www.idealtest.org/dbDetailForUser.do?id=7) (po registraci).
+[2] CASIA FingerprintV5, dostupné zde: [idealtest.org](http://www.idealtest.org/dbDetailForUser.do?id=7) (po registraci).
 
-[3] Hong Kong Polytechnic University Fingerprint Images Database, Dostupné zde: [comp.polyu.edu.hk](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (po registraci).
+[3] Hong Kong Polytechnic University Fingerprint Images Database, dostupné zde: [comp.polyu.edu.hk](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (po registraci).
 
-[4] FVC2006, Dostupné zde: [atvs.ii.uam.es](http://atvs.ii.uam.es/atvs/fvc2006.html) (po registraci učitele)
+[4] FVC2006, dostupné zde: [atvs.ii.uam.es](http://atvs.ii.uam.es/atvs/fvc2006.html) (po registraci učitele)
 
-[5] NIST dataset SD04, Dostupné na internetu.
+[5] NIST dataset SD04, dostupné na internetu.
 
-[6] SOCOFing, Dostupné zde: [kaggle.com](https://www.kaggle.com/ruizgara/socofing).
+[6] SOCOFing, dostupné zde: [kaggle.com](https://www.kaggle.com/ruizgara/socofing).
 
-### Zdroje
-- [Brock et al., 2019] Andrew Brock, Jeff Donahue, Karen Simonyan. Large Scale GAN Training for High Fidelity Natural 
-Image Synthesis. In ICLR, 2019.
-- [He et al., 2016] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning 
-for image recognition. In CVPR, 2016.
-- [Jolicoeur-Martineau et al., 2019] Alexia Jolicoeur-Martineau. The relativistic discriminator: a key element missing 
-from standard GAN. in ICLR, 2019.
-- [Odena et al., 2017] Augustus Odena, Christopher Olah, and Jonathon Shlens. Conditional image synthesis 
-with auxiliary classifier GANs. In ICML, 2017.
-- [Zhang et al., 2018] Han Zhang, Ian Goodfellow, Dimitris Metaxas, and Augustus Odena. Self-attention generative
-adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.
-- [Miyato et al., 2018] Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization
-for generative adversarial networks. In ICLR, 2018.
-- [Karras et al., 2018] Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. Progressive Growing of GANs for 
-Improved Quality, Stability, and Variation. In ICLR, 2018
+[7] Brock et al. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
+
+[8] He et al. *Deep residual learning for image recognition*, 2016.
+
+[9] Jolicoeur-Martineau et al. *The relativistic discriminator: a key element missing from standard GAN*, 2019.
+
+[10] Odena et al. *Conditional image synthesis with auxiliary classifier GANs*, 2017.
+
+[11] Zhang et al. *Self-attention generative adversarial networks*, 2018.
+
+[12] Miyato et al. *Spectral normalization for generative adversarial networks*, 2018.
+
+[13] Karras et al. *Progressive Growing of GANs for Improved Quality, Stability, and Variation*, 2018.
+
+[14] Karras et al. *A Style-Based Generator Architecture for Generative Adversarial Networks*, 2018.
+
+[15] Brock et al. *Large Scale GAN Training for High Fidelity Natural Image Synthesis*, 2019.
+
+[16] Zhang et al. *Self-Attention Generative Adversarial Networks*, 2019.
+
+[17] Heusel et al. *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium*, 2018.
+
+[18] Minaee and Abdolrashidi, *Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN*, 2018.
+
+[19] Bontrager et al., *DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution*, 2017.
+
+[20] Cao and Jain, *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
 ## Evaluation
 
@@ -84,53 +98,3 @@ Improved Quality, Stability, and Variation. In ICLR, 2018
 - [Xu Q. et al., 2018] [An empirical study on evaluation metrics of generative adversarial networks](https://arxiv.org/pdf/1806.07755.pdf)
 - [Borji A., 2018] [Pros and Cons of GAN Evaluation Measures](https://arxiv.org/pdf/1802.03446.pdf)
 - [Shmelkov K., Schmid C., Alahari K, 2018] [How good is my GAN?](https://hal.inria.fr/hal-01850447/document)
-
-## Related Work
-
-### [Finger-GAN (arXiv, Dec 2018)](https://arxiv.org/abs/1812.10482)
-Používají "obyčejný" deep convolutional GAN (DC-GAN).
-Zmiňují, že je problém dosáhnout spojitých čar u vygenerovaných otisků prstů, proto použili pro regularizaci total variation (TV).
-Generují obrázky 64x64.
-
-Použité datasety:
-1. FVC 2006 Fingerprint Database (12x140)
-2. PolyU Fingerprint Databases (5x300), (použité zvlášť).  
-
-FID score, jak sami zmiňují mají poměrně malé (70.5).
-Implementaci jsem nenašel.
-
-Nekvalitní publikace, zmiňují že GANy používají pro generování otisků jako první, což rozhodně neni pravda, viz. další dvě popsané publikace.
-
-### [DeepMasterPrints (arXiv, Oct 2018 v4)](https://arxiv.org/abs/1705.07386)  
-Cílem publikace je ukázat jak lze napadnout malé čtečky otisků prstů (na mobilních telefonech).
-
-Učí síť generovat (částečné) otisky prstů. Po naučení sítě hledají v jejím latent space takové otisky, které 
-se nejlépe hodí pro slovníkový útok (bez znalosti otisků, které jsou u čtečky autorizovány).
-
-Používají síť popsanou v publikaci [Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434). Je to WGAN, Wasserstein loss function, RMSProp lr=0.00005, batchSize=64, laten variable vector=64
-
-Použité datasety:
-1. NIST Special Database 9 (10x5400)  
-2. FingerPass DB7 dataset (12 částečných otisku x720) (použité zvlášť)  
-
-Implementace nenalezena.
-
-### [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
- Používají I-WGAN. Pro lepší výsledky a snazší trénink mají v architektuře pro předtrénování generátoru convolutional auto-encoder.
-
-Natrénovat např DC-GAN pro generování 512x512 obrázků je bez optimalizací (např.: progressive GAN) takřka nemožné.
-Generují otisky o velikosti 512x512 (500 DPI). 
-    
-Použité datasety:
-1. 250K rolovaných otisků prstů od nezmíněné forézní agentury. Odkazují se na [tento článek](https://ieeexplore.ieee.org/document/8272728), kde byl použit stejný dataset.
-
-Implementace nenalezena, ale mají přesně popsanou architekturu sítě, takže by neměl být problém ji zreplikovat.
-Ze tří popsaných publikací je tato rozhodně nejlepší.
-
-## GANs SOTA and publications
-- [StyleGAN - A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv, Dec 2018 v1)](https://arxiv.org/abs/1812.04948)
-- [BigGAN - Large Scale GAN Training for High Fidelity Natural Image Synthesis (arXiv, Sep 2018 v1)](https://arxiv.org/abs/1809.11096)
-- [SAGAN - SSelf-Attention Generative Adversarial Networks (arXiv, May 2018 v1)](https://arxiv.org/abs/1805.08318)
-- [Spectral Normalization for Generative Adversarial Networks (arXiv, Feb 2018)](https://arxiv.org/abs/1802.05957) - velkou mírou přispívá k stabilitě učení sítě (použito např. v SAGAN)
-- [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium (arXiv, Jun 2017 v1)](https://arxiv.org/abs/1706.08500) - použití různě velkého learning rate pro generátor a diskriminator
-- [ProGAN - Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv, Oct 2017 v1)](https://arxiv.org/abs/1710.10196)
