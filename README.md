@@ -16,7 +16,7 @@ Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků pr
 
 ## Volba architektury
 
-Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ našeho modelu jsme zvolili existující implementaci [10] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
+Po nastudování mnoha *state of the art* technik a architektur GAN [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] a několika publikací zabývajících se generováním otisků prstů [18] [19] [20] jsme jako základ našeho modelu jsme zvolili existující implementaci [21] architektury BigGAN. Tu jsme pozměnili tak, aby dokázala pracovat s šedotónovými obrázky ve větším rozlišení (96x96 pixelů oproti původním 64x64 pixelům). Zároveň jsme vybudovali infrastrukturu pro ukládání a snadné načítání naučených modelů.
 
 ## Učicí infrastruktura
 
@@ -91,9 +91,9 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 
 [20] Cao and Jain, *Fingerprint Synthesis: Evaluating Fingerprint Search at Scale*, 2018.
 
-## Evaluation
+[21] RaLS AC-BigGAN with MinibatchStddev, dostupné zde: [kaggle.com](https://www.kaggle.com/yukia18/sub-rals-ac-biggan-with-minibatchstddev).
 
-Žádný standardizovaný vyhodnocovací model. Často se používá např. Inception Score, které ale využívá síť naučenou na ImageNetu, což je pro otisky prstů nejspíš irelevantní. Doporučuje se 1NN ve spojením s manuálním vyhodnocením.
+## Evaluation
 
 - [Xu Q. et al., 2018] [An empirical study on evaluation metrics of generative adversarial networks](https://arxiv.org/pdf/1806.07755.pdf)
 - [Borji A., 2018] [Pros and Cons of GAN Evaluation Measures](https://arxiv.org/pdf/1802.03446.pdf)
