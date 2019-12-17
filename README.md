@@ -10,7 +10,7 @@ GAN je typ strojového učení představený v roce 2014 používaný pro genero
 
 ## Hledání datasetu
 
-Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety amerického NISTu. Po zvážení několika kandidátů [2] [3] [4] jsme zvolili dataset SOCOFing dostupný na Kaggle [5] pro relativně kvalitní snímky otisků a kompaktnost. Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, aby šly snadno integrovat do nějaké z existujících architektur GAN. V názvech obrázků datasetu byly zakódované informace o pohlaví a typu prstu, které jsme extrahovali a při trénování použili pro kategorizaci dat.
+Prvním krokem bylo nalezení vhodných trénovacích dat. Na internetu již bohužel nejsou k nalezení rozsáhlé datasety amerického NISTu. Po zvážení několika kandidátů [2] [3] [4] [5] jsme zvolili dataset SOCOFing dostupný na Kaggle [6] pro relativně kvalitní snímky otisků a kompaktnost. Dataset jsme předzpracovali - bylo třeba oříznout rámečky kolem otisků prstů a změnit rozměry snímků tak, aby šly snadno integrovat do nějaké z existujících architektur GAN. V názvech obrázků datasetu byly zakódované informace o typu prstu a pohlaví subjektu, které jsme extrahovali a při trénování použili pro kategorizaci dat.
 
 ## Volba architektury
 
@@ -36,26 +36,6 @@ Pokusili jsme se tedy hledat páry obrázků na základě podobnosti markantů. 
 
 Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů založený na GAN. Při manuální inspekci vygenerované obrázky v drtivé většině případů vypadají jako reálné otisky a obsahují rozpoznatelné markanty. Je však třeba více prozkoumat možnosti kvantitativního vyhodnocení generátorů.
 
-## TODO
-- [x] Ukládat více obrázků v průběhu učení (obrázky můžou být obdelníkové, vždy ale budou stejné rozměry)
-- [x] Vizualizace dat pro učení sítě (po processingu)
-- [x] Zdokumentovat získání datasetu a jeho načtení
-- [x] Ukládat checkpointy a obrázky z průběhu učení na google drive. 
-    - [x] Zajistit i možnost načtení checkpointu z google drive (dobře zdokumentovat). 
-- [x] Úprava sítě pro naše data
-- [x] Úprava sítě pro obdelníkové obrázky
-- [] Vyhodnocení kvality a diversity generovaných dat. Zvolit vhodné metriky/metody
-    - porovnat s ostatními (viz. publikace níže)
-- [x] Učit síť 96x96 
-- [x] Učit síť s 1 kanálem pro barvu (misto RGB) 
-    - hotovo v s96-param_tuning brachi
-- [x] Vyčistit repo (smazat SAGAN) 
-- [] Přidat licenci a zkontrolovat stávající použití v Colabu
-- [] Přesunout zdroje v popisu architektury do referencí v dokumentaci
-
-## Run
-
-
 ## Popis použité architektury:
 - Síť založena na BigGAN [Brock et al., 2019]
 - Spectral Normalization [Miyato et al., 2018] pro lepší stabilitu učení.
@@ -66,6 +46,20 @@ Lze říci, že se nám podařilo vytvořit funkční generátor otisků prstů 
 - Loss: RaLS [Jolicoeur-Martineau et al., 2019] s váhovanou auxiliary classification loss [Odena et al., 2017]
 - Uniform input noise na reálné obrázky
 - Shared embedding 
+
+---
+
+[1] Goodfellow I.J. et al., *Generative Adversarial Networks*, 2014.
+
+[2] CASIA FingerprintV5, Dostupné zde: [idealtest.org](http://www.idealtest.org/dbDetailForUser.do?id=7) (po registraci).
+
+[3] Hong Kong Polytechnic University Fingerprint Images Database, Dostupné zde: [comp.polyu.edu.hk](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (po registraci).
+
+[4] FVC2006, Dostupné zde: [atvs.ii.uam.es](http://atvs.ii.uam.es/atvs/fvc2006.html) (po registraci učitele)
+
+[5] NIST dataset SD04, Dostupné na internetu.
+
+[6] SOCOFing, Dostupné zde: [kaggle.com](https://www.kaggle.com/ruizgara/socofing).
 
 ### Zdroje
 - [Brock et al., 2019] Andrew Brock, Jeff Donahue, Karen Simonyan. Large Scale GAN Training for High Fidelity Natural 
@@ -82,17 +76,6 @@ adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.
 for generative adversarial networks. In ICLR, 2018.
 - [Karras et al., 2018] Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. Progressive Growing of GANs for 
 Improved Quality, Stability, and Variation. In ICLR, 2018
-
-## Datasets
-
-- SOCOFing | [Dostupné na Kaggle](https://www.kaggle.com/ruizgara/socofing) (obsahuje duplicitní složky) | [Publikace](https://arxiv.org/pdf/1807.10609.pdf) | 6000 otisků od 600 afrických osob (10x600)
-- CASIA | [Dostupné zde](http://www.idealtest.org/dbDetailForUser.do?id=7) (nutná registrace) | 20000 rolovaných otisků od 500 osob (40x500)
-- Hong Kong Polytechnic University | [Dostupné zde](http://www4.comp.polyu.edu.hk/~csajaykr/fingerprint.htm) (nutná registrace) | 1800 rolovaných otisků od 300 osob
-  - Existuje také [jiný dataset](http://www4.comp.polyu.edu.hk/~biometrics/HRF/HRF_old.htm) od stejné skupiny, který ale nejspíš nejde stáhnout.
-- FVC2006 | [Dostupné zde](http://atvs.ii.uam.es/atvs/fvc2006.html) (nutná registrace učitele) | [Popis datasetu](http://bias.csr.unibo.it/fvc2006/databases.asp) | 1800 otisků od 140 osob (12x140)
-  - Dataset obsahuje 4 sady (vždy 1800) otisků získány různými sensory.
-- NIST datasets | [Info](https://www.nist.gov/itl/iad/image-group/resources/biometric-special-databases-and-software)
-  - Další části nedostupné. Měly by to být desetitisíce otisků (SD14 obsahuje 54K otisků).
 
 ## Evaluation
 
@@ -131,7 +114,7 @@ Použité datasety:
 2. FingerPass DB7 dataset (12 částečných otisku x720) (použité zvlášť)  
 
 Implementace nenalezena.
-    
+
 ### [Fingerprint Synthesis (IEEE, Feb 2018)](https://ieeexplore.ieee.org/document/8411200)
  Používají I-WGAN. Pro lepší výsledky a snazší trénink mají v architektuře pro předtrénování generátoru convolutional auto-encoder.
 
