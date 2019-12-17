@@ -121,4 +121,4 @@ Do budoucna by bylo vhodné implementovat automatizované vyhodnocení kvality a
 
 [[22]](https://arxiv.org/abs/1806.07755) Qiantong Xu, Gao Huang, Yang Yuan, Chuan Guo, Yu Sun, Felix Wu, Kilian Weinberger. *An empirical study on evaluation metrics of generative adversarial networks*, 2018.
 
-[23] Knihovna Source, dostupná zde: [sourceafis.machinezoo.com](https://sourceafis.machinezoo.com/).
+[23] Knihovna SourceAFIS, dostupná zde: [sourceafis.machinezoo.com](https://sourceafis.machinezoo.com/).
